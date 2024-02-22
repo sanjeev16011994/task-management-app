@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import CreateTask from "./components/CreateTask";
+import TaskList from "./components/TaskList";
+import { useState, useEffect } from "react";
 
 function App() {
+  const initialState = {
+    added: [],
+    pending: [],
+    completed: [],
+  };
+  const [tasks, setTasks] = useState(initialState);
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    const tasks = localStorage.getItem("tasks");
+    setTasks(tasks ? JSON.parse(tasks) : initialState);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="app-container">
+      <h2 className="app-header">Task Management</h2>
+      <div className="submit-btn-container">
+        <button
+          className={`${toggle ? "close-btn" : "add-btn"}`}
+          onClick={() => setToggle(!toggle)}
         >
-          Learn React
-        </a>
-      </header>
+          {toggle ? <span> &times; Close</span> : "+ Add New"}
+        </button>
+      </div>
+      {toggle && <CreateTask tasks={tasks} setTasks={setTasks} />}
+      <TaskList tasks={tasks} setTasks={setTasks} />
     </div>
   );
 }
