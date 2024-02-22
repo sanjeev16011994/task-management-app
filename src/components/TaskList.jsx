@@ -42,8 +42,8 @@ function TaskList({ tasks, setTasks }) {
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="list">
           {lists.map((listKey) => (
-            <div className="droppable">
-              <div className="column-header">{listKey}</div>
+            <div className="droppable" key={listKey} >
+              <div className="column-header">{listKey}({tasks[listKey].length})</div>
               <Droppable droppableId={`${listKey}`}>
                 {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
