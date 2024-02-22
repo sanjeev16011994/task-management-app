@@ -46,7 +46,7 @@ function TaskList({ tasks, setTasks }) {
               <div className="column-header">{listKey}({tasks[listKey]?.length})</div>
               <Droppable droppableId={`${listKey}`}>
                 {(provided) => (
-                  <div {...provided.droppableProps} ref={provided.innerRef}>
+                  <div {...provided.droppableProps} ref={provided.innerRef} className="min-height" >
                     {tasks[listKey]?.map((item, index) => (
                       <TaskItem key={item.id} item={item} index={index} />
                     ))}
