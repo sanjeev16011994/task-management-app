@@ -43,7 +43,7 @@ function TaskList({ tasks, setTasks }) {
         <div className="list">
           {lists.map((listKey) => (
             <div className="droppable" key={listKey} >
-              <div className="column-header">{listKey}({tasks[listKey].length})</div>
+              <div className="column-header">{listKey}({tasks[listKey]?.length})</div>
               <Droppable droppableId={`${listKey}`}>
                 {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
