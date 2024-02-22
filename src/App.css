@@ -139,6 +139,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 8px;
   margin-top: 20px;
+  height: 100vh;
 }
 
 .column-header{
@@ -156,7 +157,7 @@
 }
 
 .min-height{
-  min-height: 200px;
+  min-height: 100%;
 }
 
 
